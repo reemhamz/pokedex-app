@@ -11,8 +11,8 @@ class App extends Component {
       pokemonName: "",
       pokemonID: [],
       introRegion: "",
-      typeOne: "",
-      typeTwo: "",
+      primaryType: "",
+      secondaryType: "",
     }
   }
   
@@ -20,34 +20,30 @@ class App extends Component {
     
       axios({
         method:'GET',
-        url: `https://pokeapi.co/api/v2/pokemon/?limit=20`,
+        url: `https://pokeapi.co/api/v2/pokemon/?limit=5`,
         dataResponse: 'json',
       })
-        .then((data) => {
-          console.log(data.data.results)          
-          
-          
+        .then((dataOne) => {
+          console.log(dataOne.data.results)
+
           this.setState({
-            result: data.data.results
+            result: dataOne.data.results
           })
 
-          this.state.result.map((fetchInfo) => {
-            axios({
+          this.state.result.map(async(fetchInfo) => {
+            return axios({
                 method: 'GET',
                 url: `${fetchInfo.url}`,
                 dataResponse: 'json',
               })
               .then( (dataTwo) =>{
-                console.log('this is the data of the second axios call', dataTwo)
-                console.log(dataTwo.data.id)
+                
+                console.log([dataTwo.data.id])
 
                 this.setState({
-                  pokemonID: dataTwo.data.id
+                  pokemonID: [dataTwo.data],
                 })
-
-                console.log("seeing the ID state",this.state.pokemonID)
               });
-            
           })
         });
   }
@@ -58,13 +54,15 @@ class App extends Component {
               
             <h1>Pokédex!</h1>
             
-            <h3>{this.state.pokemonID}</h3> 
-            {this.state.result.map(function(pokeName) {
+            {this.state.pokemonID.map((theID) => {
+              return console.log("hey this is the pokemon info",theID)
+            })}
+            {this.state.result.map((pokeName)  =>{
               return (
                 <h3>{pokeName.name}</h3>
-              ) 
-
+                )
               })}
+              {/* {this.state.pokemonInfo} */}
             
             {/* <PokemonCard /> */}
             
