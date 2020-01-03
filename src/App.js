@@ -7,6 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      pokemonInfo:[],
       result: [],
       pokemonName: "",
       pokemonID: [],
@@ -20,7 +21,7 @@ class App extends Component {
     
       axios({
         method:'GET',
-        url: `https://pokeapi.co/api/v2/pokemon/?limit=5`,
+        url: `https://pokeapi.co/api/v2/pokemon/?limit=2`,
         dataResponse: 'json',
       })
         .then((dataOne) => {
@@ -37,12 +38,24 @@ class App extends Component {
                 dataResponse: 'json',
               })
               .then( (dataTwo) =>{
-                
-                console.log([dataTwo.data.id])
+                // console.log(dataTwo)
+
+                // console.log(Object.values(dataTwo))
+                const dataTwoArray = Object.values(dataTwo)
+                console.log(dataTwoArray)
 
                 this.setState({
-                  pokemonID: [dataTwo.data],
+                  pokemonInfo: [dataTwoArray]
                 })
+
+                // console.log(this.state.pokemonInfo)
+                // this.state.pokemonInfo.map((getInfo) => {
+                //   console.log(getInfo[0].id)
+
+                //   this.setState({
+                //     pokemonID: getInfo[0].id
+                //   })
+                // })
               });
           })
         });
@@ -53,16 +66,29 @@ class App extends Component {
             <div className="App">
               
             <h1>Pokédex!</h1>
-            
-            {this.state.pokemonID.map((theID) => {
-              return console.log("hey this is the pokemon info",theID)
-            })}
-            {this.state.result.map((pokeName)  =>{
+
+            {this.state.pokemonInfo.map((getInfo) => {
+              // console.log(getInfo[0].id)
               return (
+                <>
+                  <h3>{getInfo[0].id}</h3>
+
+                  <h3>{getInfo[0].name}</h3>
+
+                </>
+              )
+            })}
+            
+            
+            {/* {this.state.result.map((pokeName)  =>{
+              return (
+                <>
+                <h3>{this.state.pokemonID}</h3>
                 <h3>{pokeName.name}</h3>
+                  </>
                 )
-              })}
-              {/* {this.state.pokemonInfo} */}
+              })} */}
+              
             
             {/* <PokemonCard /> */}
             
