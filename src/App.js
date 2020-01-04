@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import PokemonCard from './PokemonCard';
+// import PokemonCard from './PokemonCard';
 import axios from 'axios';
 
 class App extends Component {
@@ -21,11 +21,11 @@ class App extends Component {
     
     axios({
       method: 'GET',
-      url: `https://pokeapi.co/api/v2/pokemon/?limit=9`,
+      url: `https://pokeapi.co/api/v2/pokemon/?limit=3`,
       dataResponse: 'json',
     })
       .then((fetchNames) => {
-        console.log(fetchNames.data.results)
+        // console.log(fetchNames.data.results)
 
         this.setState({
           result: fetchNames.data.results
@@ -39,7 +39,7 @@ class App extends Component {
           }));
         
           Promise.all(pokePromise).then(pokeData => {
-            console.log(pokeData)
+            // console.log(pokeData)
             const pokeInfo = pokeData.map(data => {
               Object.values(data)
             })
@@ -47,7 +47,7 @@ class App extends Component {
                   pokemonInfo: pokeData
                 })
             
-            console.log(this.state.pokemonInfo)
+            // console.log(this.state.pokemonInfo)
           })
         
       })
@@ -60,19 +60,36 @@ class App extends Component {
             <h1>Pokédex!</h1>
 
             {this.state.pokemonInfo.map(getInfo => {
-              console.log(getInfo)
-              return (
-                <>
+              
+              console.log(getInfo.data.types)
+              const typesObject = getInfo.data.types;
+
+              const typesArray = Object.values(typesObject)
+
+              console.log(typesArray)
+              const showType = typesArray.map(getType => {
+                console.log(getType.type.name)
+                return getType.type.name
+                })
+                
+                return (
+                  <>
+                    {console.log(showType)}
+                    <h3>{showType.map(showMeTypes => {
+                      console.log(showMeTypes)
+                      return (
+                        <>
+                          {showMeTypes}
+                          </>
+                      )
+                    })}</h3>
                   <h3>{getInfo.data.id}</h3>
                   
                   <h3>{getInfo.data.name}</h3>
-                  <h3>{console.log(getInfo.data.types)}</h3>
                 </>
               )
             })}
-            <PokemonCard />
-            
-            
+            {/* <PokemonCard /> */}
             </div>
         );
     }
