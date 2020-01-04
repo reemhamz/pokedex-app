@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      pokemonInfo:[],
+      pokemonInfo: [],
       result: [],
       pokemonName: "",
       pokemonID: [],
@@ -19,46 +19,38 @@ class App extends Component {
   
   componentDidMount() {
     
-      axios({
-        method:'GET',
-        url: `https://pokeapi.co/api/v2/pokemon/?limit=2`,
-        dataResponse: 'json',
-      })
-        .then((dataOne) => {
-          console.log(dataOne.data.results)
+    axios({
+      method: 'GET',
+      url: `https://pokeapi.co/api/v2/pokemon/?limit=9`,
+      dataResponse: 'json',
+    })
+      .then((fetchNames) => {
+        console.log(fetchNames.data.results)
 
-          this.setState({
-            result: dataOne.data.results
-          })
+        this.setState({
+          result: fetchNames.data.results
+        })
 
-          this.state.result.map(async(fetchInfo) => {
-            return axios({
-                method: 'GET',
-                url: `${fetchInfo.url}`,
-                dataResponse: 'json',
-              })
-              .then( (dataTwo) =>{
-                // console.log(dataTwo)
-
-                // console.log(Object.values(dataTwo))
-                const dataTwoArray = Object.values(dataTwo)
-                console.log(dataTwoArray)
-
+        const pokePromise = fetchNames.data.results.map((fetchInfo) => 
+          axios({
+            method: 'GET',
+            url: fetchInfo.url,
+            dataResponse: 'json',
+          }));
+        
+          Promise.all(pokePromise).then(pokeData => {
+            console.log(pokeData)
+            const pokeInfo = pokeData.map(data => {
+              Object.values(data)
+            })
                 this.setState({
-                  pokemonInfo: [dataTwoArray]
+                  pokemonInfo: pokeData
                 })
-
-                // console.log(this.state.pokemonInfo)
-                // this.state.pokemonInfo.map((getInfo) => {
-                //   console.log(getInfo[0].id)
-
-                //   this.setState({
-                //     pokemonID: getInfo[0].id
-                //   })
-                // })
-              });
+            
+            console.log(this.state.pokemonInfo)
           })
-        });
+        
+      })
   }
 
     render() {
@@ -67,30 +59,18 @@ class App extends Component {
               
             <h1>Pokédex!</h1>
 
-            {this.state.pokemonInfo.map((getInfo) => {
-              // console.log(getInfo[0].id)
+            {this.state.pokemonInfo.map(getInfo => {
+              console.log(getInfo)
               return (
                 <>
-                  <h3>{getInfo[0].id}</h3>
-
-                  <h3>{getInfo[0].name}</h3>
-
+                  <h3>{getInfo.data.id}</h3>
+                  
+                  <h3>{getInfo.data.name}</h3>
+                  <h3>{console.log(getInfo.data.types)}</h3>
                 </>
               )
             })}
-            
-            
-            {/* {this.state.result.map((pokeName)  =>{
-              return (
-                <>
-                <h3>{this.state.pokemonID}</h3>
-                <h3>{pokeName.name}</h3>
-                  </>
-                )
-              })} */}
-              
-            
-            {/* <PokemonCard /> */}
+            <PokemonCard />
             
             
             </div>
