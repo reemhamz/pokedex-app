@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-// import PokemonCard from './PokemonCard';
+import './styles/App.scss';
+import PokemonCard from './PokemonCard';
 import axios from 'axios';
 
 class App extends Component {
@@ -21,11 +21,11 @@ class App extends Component {
     
     axios({
       method: 'GET',
-      url: `https://pokeapi.co/api/v2/pokemon/?limit=3`,
+      url: `https://pokeapi.co/api/v2/pokemon/?limit=10`,
       dataResponse: 'json',
     })
       .then((fetchNames) => {
-        // console.log(fetchNames.data.results)
+        console.log(fetchNames.data.results)
 
         this.setState({
           result: fetchNames.data.results
@@ -38,58 +38,34 @@ class App extends Component {
             dataResponse: 'json',
           }));
         
+        //promise.all basically waits for everything in pokepromise to run so it then executes everything coming after it
           Promise.all(pokePromise).then(pokeData => {
             // console.log(pokeData)
             const pokeInfo = pokeData.map(data => {
               Object.values(data)
+              // console.log(Object.values(data))
+              return Object.values(data)
             })
                 this.setState({
                   pokemonInfo: pokeData
                 })
             
             // console.log(this.state.pokemonInfo)
+            
           })
         
       })
   }
 
-    render() {
+  render() {
+    // console.log(this.state.pokemonInfo);
         return (
             <div className="App">
               
             <h1>Pokédex!</h1>
 
-            {this.state.pokemonInfo.map(getInfo => {
-              
-              console.log(getInfo.data.types)
-              const typesObject = getInfo.data.types;
-
-              const typesArray = Object.values(typesObject)
-
-              console.log(typesArray)
-              const showType = typesArray.map(getType => {
-                console.log(getType.type.name)
-                return getType.type.name
-                })
-                
-                return (
-                  <>
-                    {console.log(showType)}
-                    <h3>{showType.map(showMeTypes => {
-                      console.log(showMeTypes)
-                      return (
-                        <>
-                          {showMeTypes}
-                          </>
-                      )
-                    })}</h3>
-                  <h3>{getInfo.data.id}</h3>
-                  
-                  <h3>{getInfo.data.name}</h3>
-                </>
-              )
-            })}
-            {/* <PokemonCard /> */}
+            <PokemonCard pokeInfoProp={this.state.pokemonInfo} />
+            
             </div>
         );
     }

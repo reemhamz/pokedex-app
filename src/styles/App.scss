@@ -1,0 +1,23 @@
+@import './setup';
+@import './fonts';
+@import './card.scss';
+
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    color: black;
+    // background-color: red;
+}
+
+img{
+    max-width: 100%;
+}
+
+.wrapper{
+    max-width: 1280px;
+    width: 80%;
+    margin: 0 auto;
+}
