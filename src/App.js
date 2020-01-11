@@ -18,38 +18,43 @@ class App extends Component {
       primaryType: "",
       secondaryType: "",
       loading: false,
-      regionSelected: "kanto"
+      regionSelected: "kanto",
+      pokeCall: ""
     }
   }
 
-  
+  navCallback = (navData) => {
+
+    this.setState({
+      regionSelected: navData
+    })
+
+    const test = () => {
+        if (this.state.regionSelected === "kanto") {
+          return "?limit=151"
+        } else if (this.state.regionSelected === "johto") {
+          return "?offset=151&limit=100"
+        } else if (this.state.regionSelected === "hoenn") {
+          return "?offset=256&limit=10"
+        }
+    }
+    
+    this.setState({
+      pokeCall: test
+    })
+
+    console.log(test())
+
+    return test()
+    
+  }
+
   
   componentDidMount() {
-
-
-const navCallback = (navData) => {
-
-  this.setState({
-    regionSelected: navData
-  })
-
-  const test = () => {
-    if (this.state.regionSelected === "kanto") {
-      return "?limit=151"
-    } else if (this.state.regionSelected === "johto") {
-      return "?offset=151&limit=100"
-    } else if (this.state.regionSelected === "hoenn") {
-      return "?offset=256&limit=10"
-    }
-  }
-  return test()
-}
-
-
     
     axios({
       method: 'GET',
-      url: `https://pokeapi.co/api/v2/pokemon/${navCallback()}`,
+      url: `https://pokeapi.co/api/v2/pokemon/?limit=151`,
       dataResponse: 'json',
     })
       .then((fetchNames) => {
@@ -85,6 +90,7 @@ const navCallback = (navData) => {
                 loading: false
             })
             }
+
             setTimeout(updateLoad(), 4000);
 
                 this.setState({
@@ -103,10 +109,6 @@ const navCallback = (navData) => {
             <div className="App">
               
             <h1>Poké Polaroid!</h1>
-
-            
-
-
             {/* <PokemonCard pokeInfoProp={this.state.pokemonInfo} /> */}
 
             {this.state.loading === true ?

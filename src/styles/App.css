@@ -218,6 +218,12 @@ h3 {
       flex-wrap: wrap;
 }
 
+.pokeCard .cardInfo {
+  margin: 30px 0;
+  border: 2px solid black;
+  padding-bottom: 20px;
+}
+
 .pokeCard .cardInfo .cardHeader {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -225,7 +231,9 @@ h3 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: lightgray;
+  background-color: grey;
+  padding: 0 10px;
+  color: white;
 }
 
 .pokeName {
@@ -244,11 +252,15 @@ h3 {
   color: white;
   margin: 5px 10px;
   padding: 3px;
+  margin: 10px;
 }
 
 .cardImg {
   max-width: 300px;
   max-height: 300px;
+  padding: 20px;
+  border: 2px solid red;
+  margin: 20px;
 }
 
 .cardImg .pokeImg {
@@ -258,6 +270,12 @@ h3 {
 
 html {
   font-size: 62.5%;
+}
+
+body {
+  background: radial-gradient(black 15%, transparent 16%) 0 0, radial-gradient(black 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+  background-color: #282828;
+  background-size: 16px 16px;
 }
 
 img {

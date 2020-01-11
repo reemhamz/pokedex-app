@@ -12,6 +12,8 @@ a {
 
 h1 {
   font-size: 8rem;
+  color: crimson;
+  text-shadow: 2px 2px 2px lightgray;
 }
 
 h3 {

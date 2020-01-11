@@ -8,8 +8,6 @@
     .pokeCard{
         display: flex;
         flex-wrap: wrap;
-        // margin: 10px;
-        // width: calc(100% / 3);
         
         
         .cardInfo{
@@ -17,11 +15,11 @@
             margin: 30px 0;
             border: 2px solid black;
             padding-bottom:20px;
+            background-color:whitesmoke;
             .cardHeader{
                 display: flex;
-                // align-content: space-between;
                 justify-content: space-between;
-                background-color: grey;
+                background-color: crimson;
                 padding: 0 10px;
                 color: white;
             }
@@ -49,9 +47,10 @@
     .cardImg{
         max-width: 300px;
         max-height: 300px;
-        padding: 20px;
-        border: 2px solid red;
+        // padding: 20px;
+        border: 2px solid crimson;
         margin: 20px;
+        background-color: transparent !important;
         // margin: 20px;
         .pokeImg{
             width: 100%;
