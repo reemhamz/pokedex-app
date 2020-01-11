@@ -1,16 +1,44 @@
-.cardElements {
+.cardBody {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.pokeCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.pokeCard .cardInfo {
+  margin: 30px 0;
+  border: 2px solid black;
+  padding-bottom: 20px;
+}
+
+.pokeCard .cardInfo .cardHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: grey;
+  padding: 0 10px;
+  color: white;
 }
 
 .pokeName {
   text-transform: capitalize;
   font-size: 3rem;
+  display: inline-block;
 }
 
 .pokeID {
@@ -23,19 +51,19 @@
   color: white;
   margin: 5px 10px;
   padding: 3px;
+  margin: 10px;
 }
 
-.imgBox {
+.cardImg {
   max-width: 300px;
   max-height: 300px;
+  padding: 20px;
+  border: 2px solid red;
+  margin: 20px;
 }
 
-.imgBox .pokeImg {
+.cardImg .pokeImg {
   width: 100%;
   display: block;
-}
-
-.pokeName, .pokeID, .pokeType {
-  display: inline-block;
 }
 /*# sourceMappingURL=card.css.map */

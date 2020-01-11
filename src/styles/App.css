@@ -195,9 +195,43 @@ h1 {
   font-size: 8rem;
 }
 
+h3 {
+  display: inline-block;
+}
+
+.cardBody {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.pokeCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.pokeCard .cardInfo .cardHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: lightgray;
+}
+
 .pokeName {
   text-transform: capitalize;
   font-size: 3rem;
+  display: inline-block;
 }
 
 .pokeID {
@@ -212,16 +246,18 @@ h1 {
   padding: 3px;
 }
 
-.pokeName, .pokeID, .pokeType {
-  display: inline-block;
+.cardImg {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.cardImg .pokeImg {
+  width: 100%;
+  display: block;
 }
 
 html {
   font-size: 62.5%;
-}
-
-body {
-  color: black;
 }
 
 img {

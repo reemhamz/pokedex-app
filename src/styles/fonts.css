@@ -13,4 +13,8 @@ a {
 h1 {
   font-size: 8rem;
 }
+
+h3 {
+  display: inline-block;
+}
 /*# sourceMappingURL=fonts.css.map */

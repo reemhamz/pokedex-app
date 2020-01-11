@@ -34,7 +34,7 @@ class PokemonCard extends Component {
     render() {
         const type = this.state.typeColorObject;
         return (
-            <div className="pokemonCard">
+            <div className="PokemonCard">
                 <div className="cardElements wrapper">
             
                 {this.props.pokeInfoProp.map(getInfo => {
@@ -56,16 +56,17 @@ class PokemonCard extends Component {
                     return (
                         <>
                             <div className="pokeID">
-                                <h3>{getInfo.data.id}</h3>
+                                <h3>{`#${getInfo.data.id}`}</h3>
+                            </div>
+
+                            <div className="pokeName">
+                            <h3>{(getInfo.data.name)}</h3>
                             </div>
 
                             <div className="imgBox">
                             <img className="pokeImg" src={require(`./assets/pokemonImages/${getInfo.data.id}.jpg`)} alt=""/>
                             </div>
 
-                            <div className="pokeName">
-                            <h3>{(getInfo.data.name)}</h3>
-                            </div>
 
                             {/* {console.log('hellooooo', (showType).join(" "))} */}
                             {showType.map(showMeTypes => {
@@ -119,11 +120,13 @@ class PokemonCard extends Component {
                                 }
                                 
                             
-                                return (
-                                    <div className="pokeType" style={{ background: typesColor(), color: typeFont()}}>
-                                        <p>{showMeTypes}</p>
-                                    </div>
-                                )
+                                // return (
+                                   
+                                //     <span className="pokeType" style={{ background: typesColor(), color: typeFont()}}>
+                                //         {showMeTypes}
+                                //     </span>
+                                    
+                                // )
                             })}
                     
                         </>

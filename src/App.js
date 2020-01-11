@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
-import PokemonCard from './PokemonCard';
+// import PokemonCard from './PokemonCard';
+import PokemonCardTest from './PokemonCardTest';
+import Preloader from './Preloader';
+import Nav from './Nav';
 import axios from 'axios';
 
 class App extends Component {
@@ -14,57 +17,131 @@ class App extends Component {
       introRegion: "",
       primaryType: "",
       secondaryType: "",
+      loading: false,
+      regionSelected: "kanto"
     }
   }
+
+  
   
   componentDidMount() {
+
+
+const navCallback = (navData) => {
+
+  this.setState({
+    regionSelected: navData
+  })
+
+  const test = () => {
+    if (this.state.regionSelected === "kanto") {
+      return "?limit=151"
+    } else if (this.state.regionSelected === "johto") {
+      return "?offset=151&limit=100"
+    } else if (this.state.regionSelected === "hoenn") {
+      return "?offset=256&limit=10"
+    }
+  }
+  return test()
+}
+
+
     
     axios({
       method: 'GET',
-      url: `https://pokeapi.co/api/v2/pokemon/?limit=10`,
+      url: `https://pokeapi.co/api/v2/pokemon/${navCallback()}`,
       dataResponse: 'json',
     })
       .then((fetchNames) => {
-        console.log(fetchNames.data.results)
-
+        // console.log(fetchNames.data.results)
+        
         this.setState({
           result: fetchNames.data.results
         })
 
-        const pokePromise = fetchNames.data.results.map((fetchInfo) => 
+        const pokePromise = fetchNames.data.results.map((fetchInfo) =>
           axios({
             method: 'GET',
             url: fetchInfo.url,
             dataResponse: 'json',
-          }));
+          }
+          ));
+        this.setState({
+          loading: true
+        })
+          
         
         //promise.all basically waits for everything in pokepromise to run so it then executes everything coming after it
           Promise.all(pokePromise).then(pokeData => {
-            // console.log(pokeData)
+            
             const pokeInfo = pokeData.map(data => {
               Object.values(data)
-              // console.log(Object.values(data))
+              
               return Object.values(data)
             })
+
+            const updateLoad = () => {
+            return this.setState({
+                loading: false
+            })
+            }
+            setTimeout(updateLoad(), 4000);
+
                 this.setState({
-                  pokemonInfo: pokeData
+                  pokemonInfo: pokeData,
                 })
-            
-            // console.log(this.state.pokemonInfo)
-            
           })
         
       })
   }
+
+  
 
   render() {
     // console.log(this.state.pokemonInfo);
         return (
             <div className="App">
               
-            <h1>Pokédex!</h1>
+            <h1>Poké Polaroid!</h1>
 
-            <PokemonCard pokeInfoProp={this.state.pokemonInfo} />
+            
+
+
+            {/* <PokemonCard pokeInfoProp={this.state.pokemonInfo} /> */}
+
+            {this.state.loading === true ?
+              (
+                <div className="loader">
+                  <Preloader />
+                </div>
+              ) :
+              
+              this.state.pokemonInfo ? (
+                <>
+                  <Nav getRegionProp={this.navCallback}/>
+                  
+
+                <div className="cardBody wrapper">
+                {this.state.pokemonInfo.map(getInfo => {
+                  // console.log(getInfo)
+                  return (
+                    
+                    
+                      <PokemonCardTest
+                        key={getInfo.data.id}
+                        infoProp={getInfo}
+                      
+                      />
+                    
+                    )
+                  
+                })}
+                  </div>
+                  </>
+            ) : (
+                <h1>loading</h1>
+            )
+          }
             
             </div>
         );
