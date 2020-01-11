@@ -1,15 +1,12 @@
     .cardBody{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        // padding: 4%;
+        display: grid;
+        border: 10px solid lime;
+        grid-template-columns: repeat(3,1fr);
+        gap: 20px;
     }
     
     .pokeCard{
-        display: flex;
-        flex-wrap: wrap;
-        
-        
+
         .cardInfo{
             // margin: 20px;
             margin: 30px 0;
@@ -17,8 +14,20 @@
             padding-bottom:20px;
             background-color:whitesmoke;
             .cardHeader{
-                display: flex;
-                justify-content: space-between;
+                display: grid;
+                grid-template-areas:
+                "pokeNum empty pokeNam";
+                grid-template-columns: repeat(3,1fr);
+                grid-template-rows: 1;
+                border: 2px solid salmon;
+                .pokeID{
+                    grid-area: pokeNum;
+                }
+                .pokeName{
+                    grid-area: pokeNam;
+                }
+
+                
                 background-color: crimson;
                 padding: 0 10px;
                 color: white;
@@ -49,8 +58,9 @@
         max-height: 300px;
         // padding: 20px;
         border: 2px solid crimson;
-        margin: 20px;
+        margin: 20px auto;
         background-color: transparent !important;
+        
         // margin: 20px;
         .pokeImg{
             width: 100%;

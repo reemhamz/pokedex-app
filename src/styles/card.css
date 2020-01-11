@@ -1,20 +1,10 @@
 .cardBody {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.pokeCard {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -ms-grid;
+  display: grid;
+  border: 10px solid lime;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .pokeCard .cardInfo {
@@ -25,15 +15,29 @@
 }
 
 .pokeCard .cardInfo .cardHeader {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "pokeNum empty pokeNam";
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: 1;
+      grid-template-rows: 1;
+  border: 2px solid salmon;
   background-color: crimson;
   padding: 0 10px;
   color: white;
+}
+
+.pokeCard .cardInfo .cardHeader .pokeID {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: pokeNum;
+}
+
+.pokeCard .cardInfo .cardHeader .pokeName {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: pokeNam;
 }
 
 .pokeName {
@@ -59,7 +63,7 @@
   max-width: 300px;
   max-height: 300px;
   border: 2px solid crimson;
-  margin: 20px;
+  margin: 20px auto;
   background-color: transparent !important;
 }
 
