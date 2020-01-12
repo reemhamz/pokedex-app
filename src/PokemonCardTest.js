@@ -63,6 +63,12 @@ class PokemonCardTest extends Component {
                     <div className="cardImg">
                             <img className="pokeImg" src={require(`./assets/images/${getData.data.id}.jpg`)} alt=""/>
                     </div>
+                    <div className="bio">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab quo laborum explicabo distinctio dolore, quis consequuntur dolores laudantium quia architecto, adipisci delectus eveniet eaque culpa itaque quas vitae quam sit quaerat doloremque ipsum odit modi velit? Natus id dicta, perferendis quos delectus beatae fugiat, quaerat corrupti minus voluptatem qui ducimus cupiditate culpa? Corporis id quam recusandae necessitatibus pariatur ipsam quo?
+                </div>
+                    
+                    <div className="typeBox">
+
                     
                     {
                         showType.map(showMeTypes => {
@@ -120,11 +126,14 @@ class PokemonCardTest extends Component {
                                 <span className="pokeType" style={{ background: typesColor(), color: typeFont()}}>
                                     {showMeTypes}
                                 </span>
-
+                                
                             )
-                        })
+                        }
+                        )
                     }
+                    </div>
 
+            
                 </div>
             </div>
         )

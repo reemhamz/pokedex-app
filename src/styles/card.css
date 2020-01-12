@@ -1,10 +1,5 @@
 .cardBody {
-  display: -ms-grid;
-  display: grid;
-  border: 10px solid lime;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  border: 10px dashed pink;
 }
 
 .pokeCard .cardInfo {
@@ -12,32 +7,38 @@
   border: 2px solid black;
   padding-bottom: 20px;
   background-color: whitesmoke;
+  border: 5px dotted olive;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "header header header" "pokePic pokeBio pokeBio" "pokeType empty empty";
+  -ms-grid-columns: repeat 3, 1fr;
+      grid-template-columns: repeat 3, 1fr;
+  -ms-grid-rows: repeat 3, 1fr;
+      grid-template-rows: repeat 3, 1fr;
+}
+
+.pokeCard .cardInfo .bio {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: pokeBio;
 }
 
 .pokeCard .cardInfo .cardHeader {
-  display: -ms-grid;
-  display: grid;
-      grid-template-areas: "pokeNum empty pokeNam";
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: 1;
-      grid-template-rows: 1;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: header;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border: 2px solid salmon;
   background-color: crimson;
   padding: 0 10px;
   color: white;
-}
-
-.pokeCard .cardInfo .cardHeader .pokeID {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: pokeNum;
-}
-
-.pokeCard .cardInfo .cardHeader .pokeName {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-  grid-area: pokeNam;
 }
 
 .pokeName {
@@ -50,21 +51,43 @@
   font-size: 2rem;
 }
 
-.pokeType {
+.typeBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.typeBox .pokeType {
+  text-align: center;
   text-transform: uppercase;
   font-size: 1.5rem;
   color: white;
   margin: 5px 10px;
   padding: 3px;
   margin: 10px;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: pokeType;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .cardImg {
   max-width: 300px;
   max-height: 300px;
   border: 2px solid crimson;
-  margin: 20px auto;
-  background-color: transparent !important;
+  margin: 20px;
+  background-color: transparent;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: pokePic;
 }
 
 .cardImg .pokeImg {
