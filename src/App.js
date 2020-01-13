@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
-// import PokemonCard from './PokemonCard';
-import PokemonCardTest from './PokemonCardTest';
+
+import PokemonCard from './PokemonCard';
 import Preloader from './Preloader';
 import Nav from './Nav';
 import axios from 'axios';
@@ -18,43 +18,36 @@ class App extends Component {
       primaryType: "",
       secondaryType: "",
       loading: false,
-      regionSelected: "kanto",
-      pokeCall: ""
+      pokeCall: "",
+      regionFunction: "",
     }
+    // const navCallback = this.navCallback.bind(this)
   }
 
-  navCallback = (navData) => {
-
-    this.setState({
-      regionSelected: navData
-    })
-
-    const test = () => {
-        if (this.state.regionSelected === "kanto") {
-          return "?limit=151"
-        } else if (this.state.regionSelected === "johto") {
-          return "?offset=151&limit=100"
-        } else if (this.state.regionSelected === "hoenn") {
-          return "?offset=256&limit=10"
-        }
-    }
-    
-    this.setState({
-      pokeCall: test
-    })
-
-    console.log(test())
-
-    return test()
-    
-  }
-
-  
   componentDidMount() {
+
+  const navCallback = (navData) => {
+
+    const region = () => {
+      if (navData === "kanto") {
+        return "?limit=151"
+      } else if (navData === "johto") {
+        return "?offset=151&limit=100"
+      } else if (navData === "hoenn") {
+        return "?offset=256&limit=130"
+      }
+    }
     
-    axios({
+    // console.log(region())
+    console.log(navData)
+    console.log('this is the region call', region())
+    console.log('the region call but in state',this.state.pokeCall)
+    // return region()
+    
+
+      axios({
       method: 'GET',
-      url: `https://pokeapi.co/api/v2/pokemon/?limit=151`,
+      url: `https://pokeapi.co/api/v2/pokemon/${region()}`,
       dataResponse: 'json',
     })
       .then((fetchNames) => {
@@ -91,7 +84,7 @@ class App extends Component {
             })
             }
 
-            setTimeout(updateLoad(), 4000);
+            setTimeout(updateLoad(), 1000);
 
                 this.setState({
                   pokemonInfo: pokeData,
@@ -99,17 +92,28 @@ class App extends Component {
           })
         
       })
+
+
+
+
+
   }
 
-  
+    this.setState({
+      regionFunction: navCallback
+    })
+
+    
+  }
+
 
   render() {
-    // console.log(this.state.pokemonInfo);
         return (
+          
             <div className="App">
               
             <h1>Poké Polaroid!</h1>
-            {/* <PokemonCard pokeInfoProp={this.state.pokemonInfo} /> */}
+            
 
             {this.state.loading === true ?
               (
@@ -120,7 +124,7 @@ class App extends Component {
               
               this.state.pokemonInfo ? (
                 <>
-                  <Nav getRegionProp={this.navCallback}/>
+                  <Nav getRegionProp={this.state.regionFunction}/>
                   
 
                 <div className="cardBody wrapper">
@@ -129,7 +133,7 @@ class App extends Component {
                   return (
                     
                     
-                      <PokemonCardTest
+                      <PokemonCard
                         key={getInfo.data.id}
                         infoProp={getInfo}
                       

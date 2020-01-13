@@ -2,12 +2,11 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        // padding: 4%;
+        margin: 0 auto;
     }
     
     .pokeCard{
-        display: flex;
-        flex-wrap: wrap;
+        
         
         
         .cardInfo{
@@ -45,8 +44,8 @@
     }
 
     .cardImg{
-        max-width: 300px;
-        max-height: 300px;
+        max-width: 280px;
+        max-height: 280px;
         // padding: 20px;
         border: 2px solid crimson;
         margin: 20px;
