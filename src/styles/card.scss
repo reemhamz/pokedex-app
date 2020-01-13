@@ -1,7 +1,7 @@
     .cardBody{
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
         margin: 0 auto;
     }
     
@@ -44,15 +44,18 @@
     }
 
     .cardImg{
-        max-width: 280px;
-        max-height: 280px;
+        width: 280px;
+        height: 280px;
         // padding: 20px;
         border: 2px solid crimson;
         margin: 20px;
         background-color: transparent !important;
         // margin: 20px;
         .pokeImg{
-            width: 100%;
+            padding: 20px;
+            max-width: 100%;
             display: block;
+            width: 280px;
+            height: 280px;
         }
     }

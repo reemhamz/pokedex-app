@@ -34,7 +34,9 @@ class App extends Component {
       } else if (navData === "johto") {
         return "?offset=151&limit=100"
       } else if (navData === "hoenn") {
-        return "?offset=256&limit=130"
+        return "?offset=251&limit=130"
+      } else if (navData === "sinnoh") {
+        return "?offset=386&limit=107"
       }
     }
     

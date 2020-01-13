@@ -61,7 +61,7 @@ class PokemonCard extends Component {
                     </div>
                     
                     <div className="cardImg">
-                            <img className="pokeImg" src={require(`./assets/images/${getData.data.id}.jpg`)} alt=""/>
+                            <img className="pokeImg" src={require(`./assets/svgPoke/${getData.data.id}.svg`)} alt=""/>
                     </div>
                     
                     {
