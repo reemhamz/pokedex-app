@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactCardFlip from 'react-card-flip';
+import axios from 'axios';
 
 
 class PokemonCard extends Component {
@@ -25,8 +27,57 @@ class PokemonCard extends Component {
                 dark: "#705746",
                 steel: "#B7B7CE",
                 fairy: "#D685AD"
-            }
+            },
+            isFlipped: false,
+            pokeDesc: ""
         }
+        this.frontClick = this.frontClick.bind(this)
+        this.backClick = this.backClick.bind(this)
+    }
+    
+    componentDidMount() {
+        axios({
+            method: 'GET',
+            url: `https://pokeapi.co/api/v2/pokemon-species/${this.props.infoProp.data.id}`,
+            dataResponse: 'json',
+        })
+            .then((species) => {
+                // console.log(species)
+
+                // species.data.flavor_text_entries.map(desc => {
+                //     // console.log(desc)
+                //     if (desc.language.name === "en") {
+                //         console.log(Object.values(desc))
+                //     }
+                // })
+
+                const description = species.data.flavor_text_entries.filter(desc => desc.language.name === "en")
+                const descs = description[Math.floor(Math.random()*description.length)]
+                console.log(descs.flavor_text)
+
+                this.setState({
+                    pokeDesc: descs.flavor_text
+                })
+            }
+            
+        );
+    }
+    
+    frontClick = (e) => {
+        e.preventDefault();
+        this.setState({
+            isFlipped: true
+        })
+        console.log(this.state.isFlipped)
+    }
+
+    backClick = (e) => {
+        e.preventDefault();
+        this.setState({
+            isFlipped: false
+        })
+
+        console.log(this.state.isFlipped)
     }
 
     
@@ -34,23 +85,20 @@ class PokemonCard extends Component {
     render() {
         const type = this.state.typeColorObject;
         const getData = this.props.infoProp
-        // console.log(this.props.infoProp)
-
         const typesObject = getData.data.types;
         const typesArray = Object.values(typesObject);
-
         const showType = typesArray.map(getType => {
-            // console.log(getType.type.name)
             return getType.type.name
         })
 
         return (
             <div className="pokeCard">
 
-                <div className="cardInfo">
+                <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
 
-                    <div className="cardHeader">
+                <div className="cardInfo cardFront cardFace">
 
+                    <div className="cardHeader frontHeader">
                     <div className="pokeID">
                             <h3>{`#${getData.data.id}`}</h3>
                         </div>
@@ -68,67 +116,48 @@ class PokemonCard extends Component {
                         showType.map(showMeTypes => {
                             // console.log(showMeTypes);
 
-                            const typesColor = () => {
-                                if (showMeTypes === "grass") {
-                                    return type.grass
-                                } else if (showMeTypes === "fire") {
-                                    return type.fire
-                                } else if (showMeTypes === "water") {
-                                    return type.water
-                                } else if (showMeTypes === "normal") {
-                                    return type.normal
-                                } else if (showMeTypes === "electric") {
-                                    return type.electric
-                                } else if (showMeTypes === "ice") {
-                                    return type.ice
-                                } else if (showMeTypes === "fighting") {
-                                    return type.fighting
-                                } else if (showMeTypes === "poison") {
-                                    return type.poison
-                                } else if (showMeTypes === "ground") {
-                                    return type.ground
-                                } else if (showMeTypes === "flying") {
-                                    return type.flying
-                                } else if (showMeTypes === "psychic") {
-                                    return type.psychic
-                                } else if (showMeTypes === "bug") {
-                                    return type.bug
-                                } else if (showMeTypes === "rock") {
-                                    return type.rock
-                                } else if (showMeTypes === "ghost") {
-                                    return type.ghost
-                                } else if (showMeTypes === "dragon") {
-                                    return type.dragon
-                                } else if (showMeTypes === "dark") {
-                                    return type.dark
-                                } else if (showMeTypes === "steel") {
-                                    return type.steel
-                                } else if (showMeTypes === "fairy") {
-                                    return type.fairy
-                                }
-                            }
-
-                            const typeFont = () => {
-                                if (showMeTypes === "electric" || showMeTypes === "ground" || showMeTypes === "bug" || showMeTypes === "rock" || showMeTypes === "dark" || showMeTypes === "grass" || showMeTypes === "steel" || showMeTypes === "fairy" ||
-                                    showMeTypes === "flying") {
-                                    return "black"
-                                }
-                            }
-
+                            
 
                             return (
-                                <span className="pokeType" style={{ background: typesColor(), color: typeFont()}}>
-                                    {showMeTypes}
+                                <span className="pokeType">
+                                    < img src={require(`./assets/types/${showMeTypes}.svg`)
+                                    } alt={`${getData.data.name}'s type is ${showMeTypes}`} / >
+                                    
                                 </span>
 
                             )
                         })
                     }
+                        <div className="flip">
+                            
+                    <button className="flipButton" onClick={this.frontClick}>Flip to Bio</button>
+                    </div>
 
                 </div>
+
+                <div className="cardInfo cardBack cardFace">
+                        
+                        <div className="cardHeader cardBackHeader">
+
+                        <h3>
+                            About {getData.data.name}
+                        </h3>
+                        </div>
+
+                        <div className="cardBackBody">
+                        <p>
+                    {this.state.pokeDesc}
+                        </p>
+
+                        </div>
+                        <div className="flip">
+                    <button className="buttonFlip" onClick={this.backClick}>Flip to Overview</button>
+                        </div>
+                </div>
+                </ReactCardFlip>
             </div>
         )
-            
+        
     }
 }
 

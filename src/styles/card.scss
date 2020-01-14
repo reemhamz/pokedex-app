@@ -1,61 +1,113 @@
-    .cardBody{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        margin: 0 auto;
-    }
-    
-    .pokeCard{
-        
-        
-        
-        .cardInfo{
-            // margin: 20px;
-            margin: 30px 0;
-            border: 2px solid black;
-            padding-bottom:20px;
-            background-color:whitesmoke;
-            .cardHeader{
-                display: flex;
-                justify-content: space-between;
-                background-color: crimson;
-                padding: 0 10px;
-                color: white;
-            }
-        }
-    }
+.cardBody {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 0 auto;
+}
 
+// Card front
+.pokeCard {
+  .cardFront {
+    background-image: url(../assets/Subtle-Stripes.svg);
+  }
+  .cardFace {
+    margin: 30px 0;
+    border: 2px solid black;
+    padding-bottom: 20px;
+    .cardHeader{
+        background-color: crimson;
+      padding: 0 10px;
+      color: white;
+    }
+    .frontHeader {
+      display: flex;
+      justify-content: space-between;
+    }
+    .pokeName {
+      text-transform: capitalize;
+      display: inline-block;
+    }
+    .pokeID {
+      font-size: 2rem;
+    }
+    .pokeType {
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      color: white;
+      margin: 5px 10px;
+      padding: 3px;
+      margin: 10px;
+    }
+  }
+}
 
-    .pokeName{
-        text-transform: capitalize;
-        font-size: 3rem;
-        display: inline-block;
-    }
-    .pokeID{
-        font-size: 2rem;
-    }
-    .pokeType{
-        text-transform: uppercase;
-        font-size: 1.5rem;
-        color: white;
-        margin: 5px 10px;
-        padding: 3px;
-        margin: 10px;
-    }
+.cardImg {
+  width: 280px;
+  height: 280px;
+  border: 2px solid crimson;
+  margin: 20px auto;
+  background-color: transparent !important;
+  background-image: url(../assets/pokeBG2.png);
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  .pokeImg {
+    padding: 20px;
+    max-width: 100%;
+    display: block;
+    width: 280px;
+    height: 280px;
+  }
+}
 
-    .cardImg{
-        width: 280px;
-        height: 280px;
-        // padding: 20px;
-        border: 2px solid crimson;
-        margin: 20px;
-        background-color: transparent !important;
-        // margin: 20px;
-        .pokeImg{
-            padding: 20px;
-            max-width: 100%;
-            display: block;
-            width: 280px;
-            height: 280px;
-        }
+.flip {
+  margin-top: 20px;
+  button {
+    display: inline-block;
+    background-color: crimson;
+    padding: 10px 20px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    color: #fff;
+    -webkit-box-shadow: 5px 5px 0 #347474;
+    box-shadow: 5px 5px 0 #347474;
+    position: relative;
+    top: 0;
+    left: 0;
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
+    border: none;
+    &:hover {
+      color: #fff;
+      background-color: #62239a;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      top: 5px;
+      left: 5px;
     }
+  }
+}
+
+// Card back
+.cardBack {
+  height: 472px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url(../assets/Abstract-Envelope.svg);
+ background-repeat: no-repeat;
+ background-size: cover;
+  color: white;
+  .backHeader {
+    display: flex;
+    justify-content: center;
+  }
+  .cardBackBody {
+    padding: 30px;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+}

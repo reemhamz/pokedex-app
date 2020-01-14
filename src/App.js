@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
 
+import Welcome from './Welcome';
 import PokemonCard from './PokemonCard';
 import Preloader from './Preloader';
 import Nav from './Nav';
@@ -38,14 +39,7 @@ class App extends Component {
       } else if (navData === "sinnoh") {
         return "?offset=386&limit=107"
       }
-    }
-    
-    // console.log(region())
-    console.log(navData)
-    console.log('this is the region call', region())
-    console.log('the region call but in state',this.state.pokeCall)
-    // return region()
-    
+    }    
 
       axios({
       method: 'GET',
@@ -112,9 +106,10 @@ class App extends Component {
   render() {
         return (
           
-            <div className="App">
+          <div className="App">
+          <Welcome />
               
-            <h1>Poké Polaroid!</h1>
+            {/* <h1>Poké Polaroid!</h1> */}
             
 
             {this.state.loading === true ?

@@ -21,7 +21,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="Nav">
                 <form className="target" action="">
                     
                     <label htmlFor="regionChoice"></label>

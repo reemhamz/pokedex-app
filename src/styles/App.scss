@@ -1,6 +1,8 @@
 @import './setup';
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P|IBM+Plex+Mono:400,400i|IBM+Plex+Serif:400,400i&display=swap");
 @import './fonts';
-@import './card.scss';
+@import './welcome';
+@import './card';
 
 
 html{
@@ -11,12 +13,8 @@ html{
     // color: red;
     // background-color: red;
     body {
- background: radial-gradient(black 15%, transparent 16%) 0 0,
-radial-gradient(black 15%, transparent 16%) 8px 8px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-background-color:#282828;
-background-size:16px 16px;
+        background-image: url(../assets/Confetti-Doodles.svg);
+
 }
 
 

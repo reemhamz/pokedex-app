@@ -11,12 +11,26 @@ a {
 }
 
 h1{
-    font-size: 8rem;
-    color: crimson;
-    text-shadow:2px 2px 2px lightgray;
+    font-size: 5rem;
+    color: #ffcc00;
+    text-shadow: -4px 4px blue;
+    font-family: 'Press Start 2P', cursive;
+     -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 
 h3{
     display: inline-block;
+    font-size: 3rem;
 }
+
+h2, h3, h4, p, a, button {
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: italic;
+}
+
+  p {
+    font-size: 2rem;
+  }
+
