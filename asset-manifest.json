@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/pokedex-app/static/css/main.e3045fc2.chunk.css",
+    "main.css": "/pokedex-app/static/css/main.937a4046.chunk.css",
     "main.js": "/pokedex-app/static/js/main.acebebb4.chunk.js",
     "main.js.map": "/pokedex-app/static/js/main.acebebb4.chunk.js.map",
     "runtime-main.js": "/pokedex-app/static/js/runtime-main.52662007.js",
@@ -8,9 +8,9 @@
     "static/js/2.ebd5ecb7.chunk.js": "/pokedex-app/static/js/2.ebd5ecb7.chunk.js",
     "static/js/2.ebd5ecb7.chunk.js.map": "/pokedex-app/static/js/2.ebd5ecb7.chunk.js.map",
     "index.html": "/pokedex-app/index.html",
-    "precache-manifest.e84217189c423c0881aa491a8cbdf7cf.js": "/pokedex-app/precache-manifest.e84217189c423c0881aa491a8cbdf7cf.js",
+    "precache-manifest.a7f27f75b8dab8553ebbeab1b0aa55be.js": "/pokedex-app/precache-manifest.a7f27f75b8dab8553ebbeab1b0aa55be.js",
     "service-worker.js": "/pokedex-app/service-worker.js",
-    "static/css/main.e3045fc2.chunk.css.map": "/pokedex-app/static/css/main.e3045fc2.chunk.css.map",
+    "static/css/main.937a4046.chunk.css.map": "/pokedex-app/static/css/main.937a4046.chunk.css.map",
     "static/js/2.ebd5ecb7.chunk.js.LICENSE": "/pokedex-app/static/js/2.ebd5ecb7.chunk.js.LICENSE",
     "static/media/1.svg": "/pokedex-app/static/media/1.046230a2.svg",
     "static/media/10.svg": "/pokedex-app/static/media/10.e1df3cd3.svg",
@@ -578,7 +578,7 @@
     "static/media/97.svg": "/pokedex-app/static/media/97.b7796128.svg",
     "static/media/98.svg": "/pokedex-app/static/media/98.c4a3812d.svg",
     "static/media/99.svg": "/pokedex-app/static/media/99.1fcf22de.svg",
-    "static/media/App.scss": "/pokedex-app/static/media/polaroidEdit.d70548da.png",
+    "static/media/App.scss": "/pokedex-app/static/media/polaroidEdit.836fc4e4.png",
     "static/media/bug.svg": "/pokedex-app/static/media/bug.81a47b2b.svg",
     "static/media/camGif.gif": "/pokedex-app/static/media/camGif.3bfa7952.gif",
     "static/media/dark.svg": "/pokedex-app/static/media/dark.64505203.svg",
@@ -605,7 +605,7 @@
   "entrypoints": [
     "static/js/runtime-main.52662007.js",
     "static/js/2.ebd5ecb7.chunk.js",
-    "static/css/main.e3045fc2.chunk.css",
+    "static/css/main.937a4046.chunk.css",
     "static/js/main.acebebb4.chunk.js"
   ]
 }
