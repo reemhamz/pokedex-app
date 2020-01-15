@@ -115,7 +115,7 @@ class App extends Component {
                 <div className="welcomeInfo wapper" id="mainContent">
                     <h1>PokéPolaroid</h1>
                     <p>
-                        Select a Pokémon region and get polaroids photos showing all the selected region's unique Pokémon with cheeky smiles! Each polaroid also contains information about the Pokémon.
+                        Select a Pokémon region and get polaroid photos showing all the selected region's unique Pokémon with cheeky smiles! Each polaroid also contains information about the Pokémon.
                     </p>
                     <div tabIndex="0" className="buttonBox">
                     <Nav  getRegionProp={this.state.regionFunction}/>
