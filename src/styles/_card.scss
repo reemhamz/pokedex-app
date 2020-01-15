@@ -15,7 +15,7 @@
 // Card front
 .PokemonCard {
   .cardFront {
-    padding: 30px;
+    width: 340px;
     background-color: whitesmoke;
     @include mqTinyPhone{
       padding: 10px;
@@ -108,11 +108,11 @@
 
 // Card back
 .cardBack {
- height: 506.5px;
+ height: 476px;
  width: 340px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
   background-image: url(../assets/Abstract-Envelope.svg);
  background-repeat: no-repeat;
  background-size: cover;
@@ -123,6 +123,10 @@
     text-transform: capitalize;
   }
   .cardBackBody {
-    padding: 30px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 425px;
   }
 }

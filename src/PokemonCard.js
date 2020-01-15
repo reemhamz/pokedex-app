@@ -149,9 +149,9 @@ class PokemonCard extends Component {
                     {this.state.pokeDesc}
                         </p>
 
-                        </div>
                         <div className="buttonBox">
                     <button tabIndex="0" className="button" onClick={this.backClick}>Flip to Overview</button>
+                        </div>
                         </div>
                 </div>
                 </ReactCardFlip>

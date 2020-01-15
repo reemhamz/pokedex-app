@@ -48,12 +48,9 @@ h3, h4, p, a, button, select {
   p {
     font-size: 2rem;
      @include mqTablet{
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
 
-        @include mqSmallPhone{
-            font-size: 1.3rem;
-        }
   }
 
   select{
