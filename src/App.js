@@ -80,7 +80,7 @@ class App extends Component {
             })
             }
 
-            setTimeout(updateLoad(), 6000);
+            setTimeout(updateLoad(), 1000);
 
                 this.setState({
                   pokemonInfo: pokeData,

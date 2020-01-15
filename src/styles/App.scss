@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P|IBM+Plex+Mono:400,400i|IBM+Plex+Serif:400,400i&display=swap");
 @import './welcome';
 @import './card';
-@import './nav.scss';
+@import './nav';
 
 
 html{
@@ -44,6 +44,12 @@ img{
      @include mqTablet{
             width: 95%;
         }
+}
+
+.Preloader{
+    height: 400px;
+    width: 400px;
+    margin: 0 auto;
 }
 
 footer{
