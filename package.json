@@ -15,7 +15,7 @@
     "react-card-flip": "^1.0.10",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
-    "homepage": "http://reemhamz.github.io/pokedex-app"
+    "homepage": "https://reemhamz.github.io/pokedex-app"
   },
   "scripts": {
     "start": "react-scripts start",
