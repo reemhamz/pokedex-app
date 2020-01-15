@@ -80,7 +80,7 @@ class App extends Component {
             })
             }
 
-            setTimeout(updateLoad(), 1000);
+            setTimeout(updateLoad(), 6000);
 
                 this.setState({
                   pokemonInfo: pokeData,
@@ -110,7 +110,8 @@ class App extends Component {
 
             <a href="#mainContent" className="skipLink">Skip to main content.</a>
 
-          <div className="Welcome">
+            
+          <header className="Welcome" role="banner">
                 <div className="welcomeInfo wapper" id="mainContent">
                     <h1>PokéPolaroid</h1>
                     <p>
@@ -120,7 +121,7 @@ class App extends Component {
                     <Nav  getRegionProp={this.state.regionFunction}/>
                 </div>
               </div>
-              </div>
+              </header>
               
             {/* <h1>Poké Polaroid!</h1> */}
             
@@ -134,10 +135,8 @@ class App extends Component {
               
               this.state.pokemonInfo ? (
                 <>
-                  
-                  
 
-                <div className="cardBody wrapper">
+                <main className="cardBody wrapper" role="main">
                 {this.state.pokemonInfo.map(getInfo => {
                   // console.log(getInfo)
                   return (
@@ -146,19 +145,21 @@ class App extends Component {
                       <PokemonCard
                         key={getInfo.data.id}
                         infoProp={getInfo}
-                      
                       />
                     
                     )
                   
                 })}
-                  </div>
-                  </>
+                    </main>
+                    
+                </>
+                
             ) : (
                 <h1>loading</h1>
-            )
+                )
+              
             }
-            <footer>
+            <footer role="contentinfo">
               <p>
                 © Designed and coded by <a href="https://reemh.dev" target="_blank" rel="noopener noreferrer">Reem H</a> 2020 <span role="img" aria-hidden="true">📸
                 </span> 

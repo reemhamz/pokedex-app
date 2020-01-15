@@ -35,7 +35,7 @@ export default class App extends Component {
                 <div className="navInfo">
                     
                 </div>
-                <form className="target" action="" >
+                <form className="target" action="">
                     
                     <label htmlFor="regionChoice" className="visuallyHidden" >
                         Select a region from the drop-down menu below.
