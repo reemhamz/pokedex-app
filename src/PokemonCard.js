@@ -92,7 +92,7 @@ class PokemonCard extends Component {
         })
 
         return (
-            <div className="pokeCard">
+            <div className="PokemonCard">
 
                 <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
 
@@ -109,7 +109,7 @@ class PokemonCard extends Component {
                     </div>
                     
                     <div className="cardImg">
-                            <img className="pokeImg" src={require(`./assets/svgPoke/${getData.data.id}.svg`)} alt=""/>
+                            <img className="pokeImg" src={require(`./assets/svgPoke/${getData.data.id}.svg`)} alt={`${getData.data.name} posing in a field on a sunno day`}/>
                     </div>
                     
                     {
@@ -128,9 +128,9 @@ class PokemonCard extends Component {
                             )
                         })
                     }
-                        <div className="flip">
+                        <div className="buttonBox">
                             
-                    <button className="flipButton" onClick={this.frontClick}>Flip to Bio</button>
+                    <button className="button" tabIndex="0" onClick={this.frontClick}>Flip to Bio</button>
                     </div>
 
                 </div>
@@ -150,8 +150,8 @@ class PokemonCard extends Component {
                         </p>
 
                         </div>
-                        <div className="flip">
-                    <button className="buttonFlip" onClick={this.backClick}>Flip to Overview</button>
+                        <div className="buttonBox">
+                    <button tabIndex="0" className="button" onClick={this.backClick}>Flip to Overview</button>
                         </div>
                 </div>
                 </ReactCardFlip>

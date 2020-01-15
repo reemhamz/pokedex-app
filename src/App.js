@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
 
-import Welcome from './Welcome';
+// import Welcome from './Welcome';
 import PokemonCard from './PokemonCard';
 import Preloader from './Preloader';
 import Nav from './Nav';
@@ -107,7 +107,20 @@ class App extends Component {
         return (
           
           <div className="App">
-          <Welcome />
+
+            <a href="#mainContent" className="skipLink">Skip to main content.</a>
+
+          <div className="Welcome">
+                <div className="welcomeInfo wapper" id="mainContent">
+                    <h1>PokéPolaroid</h1>
+                    <p>
+                        Select a Pokémon region and get polaroids photos showing all the selected region's unique Pokémon with cheeky smiles! Each polaroid also contains information about the Pokémon.
+                    </p>
+                    <div tabIndex="0" className="buttonBox">
+                    <Nav  getRegionProp={this.state.regionFunction}/>
+                </div>
+              </div>
+              </div>
               
             {/* <h1>Poké Polaroid!</h1> */}
             
@@ -121,7 +134,7 @@ class App extends Component {
               
               this.state.pokemonInfo ? (
                 <>
-                  <Nav getRegionProp={this.state.regionFunction}/>
+                  
                   
 
                 <div className="cardBody wrapper">
@@ -144,7 +157,13 @@ class App extends Component {
             ) : (
                 <h1>loading</h1>
             )
-          }
+            }
+            <footer>
+              <p>
+                © Designed and coded by <a href="https://reemh.dev" target="_blank" rel="noopener noreferrer">Reem H</a> 2020 <span role="img" aria-hidden="true">📸
+                </span> 
+              </p>
+            </footer>
             
             </div>
         );

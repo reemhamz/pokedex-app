@@ -1,8 +1,10 @@
 @import './setup';
-@import url("https://fonts.googleapis.com/css?family=Press+Start+2P|IBM+Plex+Mono:400,400i|IBM+Plex+Serif:400,400i&display=swap");
+@import './mixins';
 @import './fonts';
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P|IBM+Plex+Mono:400,400i|IBM+Plex+Serif:400,400i&display=swap");
 @import './welcome';
 @import './card';
+@import './nav.scss';
 
 
 html{
@@ -14,10 +16,22 @@ html{
     // background-color: red;
     body {
         background-image: url(../assets/Confetti-Doodles.svg);
-
+        min-height: 100vh;
 }
 
+.skipLink {
+  position: absolute;
+  left: -1000px;
+  top: 5px;
+  z-index: 999;
+  background: white;
+  color: black;
+  font-size: 3rem;
+}
 
+.skipLink:focus {
+  left: 0;
+}
 
 img{
     max-width: 100%;
@@ -27,4 +41,12 @@ img{
     max-width: 1280px;
     width: 85%;
     margin: 0 auto;
+     @include mqTablet{
+            width: 95%;
+        }
+}
+
+footer{
+    padding: 10px;
+    background-color: white;
 }

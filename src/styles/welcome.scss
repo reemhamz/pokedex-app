@@ -1,5 +1,5 @@
 .Welcome{
-    background-image: linear-gradient(to bottom, rgba(255, 255, 252, 0.4), rgba(255, 158, 93, 0.73)),url(../assets/polaroid.png);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 252, 0.4), rgba(255, 158, 93, 0.73)),url(../assets/polaroidEdit.png);
 
     min-height: 100vh;
     background-size: cover;
@@ -12,7 +12,18 @@
         justify-content: flex-end;
         width: 50%;
         margin: 0 auto;
-        // align-content: flex-end;
+        align-items: center;
+        
+        p{
+            width:100% ;
+            margin: 0 auto;
+            font-weight: bolder;
+            text-shadow: 2px 2px 2px yellow;
+        }
+         @include mqTablet{
+            width: 80%;
+        }
+        
     }
 }
 

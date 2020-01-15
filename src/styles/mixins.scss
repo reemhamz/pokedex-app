@@ -1,0 +1,39 @@
+@mixin mqSmallLaptop{
+    @media(max-width: 1040px){
+        @content;
+    }
+}
+@mixin mqBigTablet{
+    @media(max-width: 830px){
+        @content;
+    }
+}
+@mixin mqTablet{
+    @media(max-width: 730px){
+        @content;
+    }
+}
+
+@mixin mqBigPhone{
+    @media(max-width: 640px){
+        @content;
+    }
+}
+
+@mixin mqMedPhone{
+    @media(max-width: 530px){
+        @content;
+    }
+}
+
+@mixin mqSmallPhone{
+    @media(max-width: 480px){
+        @content;
+    }
+}
+
+@mixin mqTinyPhone{
+    @media(max-width: 400px){
+        @content;
+    }
+}
